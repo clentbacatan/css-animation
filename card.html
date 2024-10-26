@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- A CARD STYLING IN A WEB VIEW, REPLACE THE VIDEO TAGS IF IMAGE ANG E.RENDER -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <style>
+        .testimonial-image-container {
+            margin: 10px auto;
+          	 padding: 10px 10px;
+            max-width: 1100px; 
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+        }
+
+        .swiper-slide {
+            padding: 10px;
+            width: 400px; /* Width of each card */
+            flex-shrink: 0; /* Prevent cards from shrinking */
+        }
+
+        .swiper-slide video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+      
+      	.swiper-button-prev,
+        .swiper-button-next {
+            color: orange; /* Change arrow color to orange */
+            position: absolute; /* Position outside the slider */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust vertical position */
+            z-index: 10; /* Ensure buttons are above other content */
+        }
+
+        .swiper-button-prev {
+            left: 10px; /* Adjust left position */
+        }
+
+        .swiper-button-next {
+            right: 10px; /* Adjust right position */
+        }
+      
+      	.testimonial-image-container .swiper-pagination-bullet {
+          height: 13px;
+          width: 13px;
+          opacity: 1;
+          margin-top: 10px;
+          background: #5372F0;
+		}
+
+      .swiper-pagination-bullet-active {
+            opacity: 1; /* Fully visible for active bullet */
+        }
+      
+       .swiper-pagination {
+            bottom: 100px; /* Position bullets above the bottom */
+        }
+
+        /* Hide arrows on mobile */
+        @media (max-width: 768px) {
+            .nav-button {
+                display: none;
+            }
+
+            .swiper-slide {
+                width: 100%; /* Full width on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="testimonial-image-container">
+        <div class="swiper-wrapper">
+            <!-- Cards (Add more as necessary) -->
+            <div class="swiper-slide">
+                <video controls>
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6693c5acdea9fe110a7f70b1.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="swiper-slide">
+                <video controls>
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6693c2480ec020f47301b36c.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="swiper-slide">
+                <video controls>
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6693c3e3dea9fe06947f6fea.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="swiper-slide">
+                <video controls>
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6693c02d0ec0208b2001b24f.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="swiper-slide">
+                <video controls>
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6693b448dea9fe36be7f66eb.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        new Swiper('.testimonial-image-container', {
+            loop: true,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1
+                },
+                768: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!-- Mobile Version -->
+<style>
+        .mobile-testimonial-image-container {
+            margin: 0 auto;
+            max-width: auto;
+            overflow: hidden;
+        }
+
+        .mobile-testimonial-image-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 750px; /* Adjust width for all 15 images */
+        }
+
+        .mobile-testimonial-image-card {
+            padding: 10px;
+            width: 400px;
+            border-radius: 50px;
+        }
+
+        .mobile-testimonial-image-card video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Pagination */
+        .mobile-pagination {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-pagination span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: lightblue; /* Default blue color */
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-pagination span.active {
+            background-color: blue; /* Active blue color */
+        }
+
+        @media (max-width: 768px) {
+            .mobile-testimonial-image-wrapper {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            .mobile-testimonial-image-card {
+                width: 100%; /* Make card full width on mobile */
+                padding: 5px;
+                flex-shrink: 0;
+            }
+
+            .mobile-testimonial-image-card video {
+                width: 100%; /* Ensure the video takes up the full width of its container */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            .mobile-pagination {
+                display: flex; /* Ensure pagination is visible on mobile */
+            }
+          
+          	.mobile-testimonial-image-wrapper::-webkit-scrollbar {
+    display: none;
+}
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-testimonial-image-container">
+        <div class="mobile-testimonial-image-wrapper" id="mobile-wrapper">
+            <!-- Video Cards -->
+            <div class="mobile-testimonial-image-card">
+                <video controls poster="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/67167ba13982c1f9bcb30733.png">
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6716500c33c4d6efc0af35b7.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="mobile-testimonial-image-card">
+                <video controls poster="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/67167ba188f5fbee7bc3deb0.png">
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/671652bfc55e63cbb66ae98a.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="mobile-testimonial-image-card">
+                <video controls poster="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/67167ba1288c9d2513016391.png">
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/671654e9c55e6302ab6aea66.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="mobile-testimonial-image-card">
+                <video controls poster="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/67167998d1e45481474aa4fc.png">
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6716567870629cc2abf76c4b.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="mobile-testimonial-image-card">
+                <video controls poster="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/67167998c55e63547e6afbae.png">
+                    <source src="https://storage.googleapis.com/msgsndr/Do9m4t3sN5wLzbKHxuWZ/media/6716578ccc183223b69dec49.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mobile-pagination" id="pagination">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <script>
+        const wrapper = document.getElementById('mobile-wrapper');
+        const paginationDots = document.querySelectorAll('.mobile-pagination span');
+
+        // Add scroll event to track position and update pagination
+        wrapper.addEventListener('scroll', () => {
+            const totalWidth = wrapper.scrollWidth - wrapper.clientWidth;
+            const scrollLeft = wrapper.scrollLeft;
+            const scrollRatio = scrollLeft / totalWidth;
+
+            // Calculate which dot to activate based on scroll ratio
+            const activeIndex = Math.round(scrollRatio * (paginationDots.length - 1));
+
+            // Remove active class from all dots
+            paginationDots.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
