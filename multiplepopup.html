@@ -1,0 +1,52 @@
+1. Add the elements to the rows to pop-up settings
+    * Every row, add pop-row & pop-01, pop-row & pop-02, etc.
+
+2. To Every button, set the actions to "Website URL" and the class you want to navigate the button
+    * .pop-01 for button 1, .pop-02 for button 2, etc
+
+3. Create a section. Create a button for the Pop-up Controller:
+    *   Add a class btn-popup
+
+4. Create a custom code within the section
+
+5. Hide the section.
+
+
+<script>
+    if(typeof $ != 'function'){
+        s = document.createElement('script');
+        s.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
+        document.head.appendChild(s);
+    }
+</script>
+
+
+<script>
+    wait4DOM = setInterval(function(){
+        if (document.readyState === 'complete'){
+            clearInterval(wait4DOM);
+            wait4$ = setInterval(function(){
+                if(typeof $ == 'function'){
+                    clearInterval(wait4$);
+                    setTimeout(function(){
+                        $('.pop-row').hide();
+                        $('.pop-01').show();
+                        $('a.btn-pop').on('click',function(e){
+                            e.preventDefault();
+                            e.stopPropagation();
+                            href = $(this).attr('href').substring(8);
+                            $('.btn-popup').trigger('click');
+                            wait4Pop = setInterval(function(){
+                                if($('#hl_main_popup').length){
+                                    clearInterval(wait4Pop);
+                                    $('.pop-row').hide();
+                                    $(href).show();
+                                }
+                            });
+                        });
+                    },500);
+                }
+            });
+        }
+    });
+</script>
