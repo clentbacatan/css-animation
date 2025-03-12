@@ -1,0 +1,58 @@
+/* With animation to the border */
+
+#col-9FPTPMN9tm {
+    --offset: 3px;
+    background: rgb(55, 21, 90);
+    border-radius: 10px;
+    position: relative;
+    height: 100%;
+    width: 400px;
+    max-width: 100%;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+#col-9FPTPMN9tm::before {
+    content: '';
+    background: conic-gradient(
+        transparent 240deg, 
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1;
+    width: 100%;
+    animation: rotate 2.5s linear infinite;
+    will-change: transform;
+}
+
+#col-9FPTPMN9tm::after {
+    content: '';
+    background: inherit;
+    border-radius: inherit;
+    position: absolute;
+    inset: var(--offset);
+    height: calc(100% - 2 * var(--offset));
+    width: calc(100% - 2 * var(--offset));
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) scale(1.4) rotate(0turn) translateZ(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1.4) rotate(1turn) translateZ(0);
+    }
+}
+
+#button-9UvYlz-zT4, .gradient-button {
+    z-index: 99999;
+    border-radius: 10px!important;
+    background-image: linear-gradient(to top, #15374f, #0b3b6a, #2d3a7f, #59308b, #880b89)!important;
+}
