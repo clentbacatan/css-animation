@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <style>
+    body {
+    	width: auto;
+    }
+  
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+    animation-delay: 1s;
+}
+
+.scroller { 
+     max-width: 98vw;
+    overflow: hidden;
+   
+}
+
+.scroller__inner {
+    display: flex;
+    padding-block: 1rem;
+    flex-wrap: wrap;
+    gap: 15px;
+   
+}
+
+.scroller[data-animated="false"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, orange 80%,orange orange 80%, transparent);
+    mask: linear-gradient(90deg, transparent, orange 20%, orange 80%, transparent);
+}
+
+.scroller[data-direction='left'] {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-speed='fast'] {
+    --_animation-duration: 10s;
+}
+
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
+.scroller[data-animated="true"] .scroller__inner:has(img:hover, img:active, img:focus) {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+img:hover, img:focus, img:active {
+    transform: scale(1.1);
+    filter: saturate(1.5);
+}
+
+
+.scroller[data-direction='right'] {
+    --_animation-direction: reverse;
+}
+
+.scroller[data-direction='slow'] {
+    --_animation-duration: 20s;
+}
+
+img {
+    width: 680px;
+    cursor: pointer;
+    filter: grayscale(.2);
+    border-radius: 10px;
+    padding-inline: 5px;
+    }
+  </style>
+ </head>
+
+ <body>
+    <div class="scroller" data-direction="left" data-speed="slow">
+        <div class="scroller__inner tag-list">
+            <img src="https://storage.googleapis.com/msgsndr/s3vU9gZeZDtkNZh0R3tF/media/671da7444e34aa4e978bb9d3.png">
+            <img src="https://storage.googleapis.com/msgsndr/s3vU9gZeZDtkNZh0R3tF/media/671da68c6e56111758421aa8.png">
+            <img src="https://storage.googleapis.com/msgsndr/s3vU9gZeZDtkNZh0R3tF/media/671da53db62b36f50bd477dc.png">
+        </div>
+    </div>
+  <script>
+    const scrollers = document.querySelectorAll(".scroller");
+
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addAnimation();
+}
+
+function addAnimation() {
+    scrollers.forEach(scroller => {
+        scroller.setAttribute("data-animated", true);
+
+        const scrollerInner = scroller.querySelector('.scroller__inner');
+        const scrollerContent = Array.from(scrollerInner.children);
+
+        scrollerContent.forEach(item => {
+            const duplicatedItem = item.cloneNode(true);
+            duplicatedItem.setAttribute('aria-hidden', true);
+            scrollerInner.appendChild(duplicatedItem);
+        });
+    });
+}
+  </script>
+
+ </body>
+</html>
