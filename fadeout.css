@@ -1,0 +1,20 @@
+#video-qybWCGFJoC {
+    animation: image-transition linear forwards;
+    animation-timeline: view();
+    animation-range: exit;
+
+}
+
+@keyframes image-transition {
+    25% {
+        opacity: 1;
+    }
+
+    85%, 100% {
+        opacity: 0;
+        scale: 1.2;
+    }
+
+}
+
+
