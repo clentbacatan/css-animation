@@ -55,3 +55,22 @@
     background-color: (60deg, #00765e 49%, #258a00 90%);
     background-image: linear-gradient(60deg, #00765e 49%, #258a00 150%);
 }
+
+
+/* Dapat naa ang top, left, right og bottom para mogana  */
+#section-FUtc4chzFE {
+    position: relative;
+}
+
+#section-FUtc4chzFE::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    filter: blur(80px);
+    background: (90deg, black 49%, black 90%);
+    background: radial-gradient(circle, rgba(161,0,224,1) 0%, rgba(154,0,214,1) 15%, rgba(57,0,79,1) 77%, rgba(57,0,79,1) 90%, rgba(57,0,79,1) 95%, rgba(48,0,66,1) 100%);
+}
