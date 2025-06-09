@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .cosmic-expanse {
+
+            max-width: 100%;
+
+            margin: 0 auto;
+
+            padding: 2rem 0rem;
+
+        }
+
+        .stellar-showcase {
+
+            text-align: left;
+
+        }
+
+        .nebula-label {
+
+            font-size: 0.75rem;
+
+            font-weight: bold;
+
+            color: #e53e3e;
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .galaxy-headline {
+
+            font-size: 2.5rem;
+
+            font-weight: bold;
+
+            margin-bottom: 2rem;
+
+        }
+
+        .orbit-display {
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .celestial-belt {
+
+            display: flex;
+
+            transition: transform 0.3s ease-in-out;
+
+        }
+
+        .star-fragment {
+
+            flex: 0 0 30.75%;
+
+            padding: 8px;
+
+            box-sizing: border-box;
+
+        }
+
+        .nova-essence {
+
+            background-color: #fff;
+
+            border-radius: 0.5rem;
+
+            padding: 1.5rem;
+
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .quasar-snapshot {
+
+            width: 100%;
+
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 0.25rem;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .pulsar-title {
+
+            font-size: 1.4rem;
+
+            font-weight: 600;
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .comet-subtitle {
+
+            font-size: 0.875rem;
+
+            color: #666;
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .meteor-details {
+
+            font-size: 1rem;
+
+            color: #888;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .gravity-controls {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            margin-top: 1rem;
+
+            padding-right: 40px;
+
+        }
+
+        .gravity-control {
+
+            background-color: #fff;
+
+            border: none;
+
+            border-radius: 50%;
+
+            width: 2.5rem;
+
+            height: 2.5rem;
+
+            font-size: 1.25rem;
+
+            cursor: pointer;
+
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            transition: background-color 0.3s ease;
+
+            margin-left: 0.5rem;
+
+        }
+
+        .gravity-control:hover {
+
+            background-color: #f0f0f0;
+
+        }
+
+        .gravity-control:disabled {
+
+            background-color: #ccc;
+
+            cursor: not-allowed;
+
+        }
+
+        .prograde-shift:not(:disabled) {
+
+            background-color: #3b82f6;
+
+            color: #fff;
+
+        }
+
+        .prograde-shift:not(:disabled):hover {
+
+            background-color: #2563eb;
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .cosmic-expanse {
+
+                padding: 0px;
+
+            }
+
+            .galaxy-headline {
+
+                font-size: 2rem;
+
+            }
+
+            .star-fragment {
+
+                flex: 0 0 85%;
+
+            }
+
+            .gravity-controls {
+
+                padding-right: 20px;
+
+            }
+
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="cosmic-expanse">
+
+        <section class="stellar-showcase">
+
+            <h2 class="nebula-label">FEATURED COURSES</h2>
+
+            <h1 class="galaxy-headline">Improve your funnelbuilding skills TODAY</h1>
+
+            <div class="orbit-display">
+
+                <div class="celestial-belt">
+
+                    <!-- Course cards will be inserted here by JavaScript -->
+
+                </div>
+
+            </div>
+
+            <div class="gravity-controls">
+
+                <button class="gravity-control retrograde-shift" id="retrogradeButton">&lt;</button>
+
+                <button class="gravity-control prograde-shift" id="progradeButton">&gt;</button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script>
+
+        const courses = [
+
+            {
+
+                name: 'Course 1',
+
+                image: 'https://d1yei2z3i6k35z.cloudfront.net/1872024/66bb34757f0d6_14_4-14.png',
+
+                processor: 'Copywriting',
+
+                brand: 'FREE',
+
+                description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+
+            },
+
+            {
+
+                name: 'Course 2',
+
+                image: 'https://d1yei2z3i6k35z.cloudfront.net/1872024/66bb34757f0d6_14_4-14.png',
+
+                processor: 'Design',
+
+                brand: 'paid',
+
+                description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+
+            },
+
+            {
+
+                name: 'Course 3',
+
+                image: 'https://d1yei2z3i6k35z.cloudfront.net/1872024/66bb34757f0d6_14_4-14.png',
+
+                processor: 'Automation',
+
+                brand: 'FREE',
+
+                description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+
+            },
+
+            {
+
+                name: 'Course 4',
+
+                image: 'https://d1yei2z3i6k35z.cloudfront.net/1872024/66bb34757f0d6_14_4-14.png',
+
+                processor: 'CSS',
+
+                brand: 'Paid',
+
+                description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
+
+            },
+
+            {
+
+                name: 'Course 5',
+
+                image: 'https://d1yei2z3i6k35z.cloudfront.net/1872024/66bb34757f0d6_14_4-14.png',
+
+                processor: 'LEAD GENERATION',
+
+                brand: 'Paid',
+
+                description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.',
+
+            },
+
+        ];
+
+
+
+        const celestialBelt = document.querySelector('.celestial-belt');
+
+        const retrogradeButton = document.getElementById('retrogradeButton');
+
+        const progradeButton = document.getElementById('progradeButton');
+
+        let currentIndex = 0;
+
+        let visibleItems = window.innerWidth <= 768 ? 1.15 : 3.25;
+
+        const totalItems = courses.length;
+
+
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+        let isSwiping = false;
+
+
+
+        function createStarFragment(course) {
+
+            return `
+            
+            <div class="star-fragment">
+            
+            <div class="nova-essence">
+            
+            <img src="${course.image}" alt="${course.name}" class="quasar-snapshot">
+            
+            <h3 class="pulsar-title">${course.name} &gt;</h3>
+            
+            <p class="comet-subtitle">${course.processor}</p>
+            
+            <p class="meteor-details">${course.description}</p>
+            
+            </div>
+            
+            </div>
+            
+            `;
+
+        }
+
+
+
+        function renderCourses() {
+
+            celestialBelt.innerHTML = courses.map(createStarFragment).join('');
+
+        }
+
+
+
+        function updateOrbit() {
+
+            const translateX = -currentIndex * (100 / visibleItems);
+
+            celestialBelt.style.transform = `translateX(${translateX}%)`;
+
+            updateGravityControls();
+
+        }
+
+
+
+        function updateGravityControls() {
+
+            const isLastItem = currentIndex >= totalItems - visibleItems;
+
+            retrogradeButton.disabled = currentIndex === 0;
+
+            progradeButton.disabled = isLastItem;
+
+
+
+            if (isLastItem) {
+
+                retrogradeButton.style.backgroundColor = '#3b82f6';
+
+                retrogradeButton.style.color = '#fff';
+
+                progradeButton.style.backgroundColor = '#ccc';
+
+                progradeButton.style.color = '#666';
+
+            } else {
+
+                retrogradeButton.style.backgroundColor = '#fff';
+
+                retrogradeButton.style.color = '#333';
+
+                progradeButton.style.backgroundColor = '#3b82f6';
+
+                progradeButton.style.color = '#fff';
+
+            }
+
+        }
+
+
+
+        function handleSwipe() {
+
+            const swipeThreshold = 50;
+
+            const swipeDistance = touchEndX - touchStartX;
+
+
+
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+
+                if (swipeDistance > 0 && currentIndex > 0) {
+
+                    currentIndex--;
+
+                    updateOrbit();
+
+                    console.log('Swiped right');
+
+                } else if (swipeDistance < 0 && currentIndex < totalItems - visibleItems) {
+
+                    currentIndex++;
+
+                    updateOrbit();
+
+                    console.log('Swiped left');
+
+                }
+
+            }
+
+        }
+
+
+
+        retrogradeButton.addEventListener('click', () => {
+
+            if (currentIndex > 0) {
+
+                currentIndex--;
+
+                updateOrbit();
+
+            }
+
+        });
+
+
+
+        progradeButton.addEventListener('click', () => {
+
+            if (currentIndex < totalItems - visibleItems) {
+
+                currentIndex++;
+
+                updateOrbit();
+
+            }
+
+        });
+
+
+
+        celestialBelt.addEventListener('touchstart', (e) => {
+
+            touchStartX = e.touches[0].clientX;
+
+            isSwiping = true;
+
+        }, { passive: true });
+
+
+
+        celestialBelt.addEventListener('touchmove', (e) => {
+
+            if (!isSwiping) return;
+
+            const currentX = e.touches[0].clientX;
+
+            const diff = touchStartX - currentX;
+
+            celestialBelt.style.transform = `translateX(calc(${-currentIndex * (100 / visibleItems)}% - ${diff}px))`;
+
+        }, { passive: true });
+
+
+
+        celestialBelt.addEventListener('touchend', (e) => {
+
+            if (!isSwiping) return;
+
+            touchEndX = e.changedTouches[0].clientX;
+
+            handleSwipe();
+
+            isSwiping = false;
+
+            updateOrbit();
+
+        });
+
+
+
+        window.addEventListener('resize', () => {
+
+            visibleItems = window.innerWidth <= 768 ? 1.15 : 3.25;
+
+            updateOrbit();
+
+        });
+
+
+
+        renderCourses();
+
+        updateOrbit();
+
+
+
+        console.log('Carousel script loaded');
+
+    </script>
+</body>
+
+</html>
